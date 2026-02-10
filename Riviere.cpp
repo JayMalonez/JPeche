@@ -36,3 +36,10 @@ int Riviere::getColonnes()
 {
 	return _nbColonnes;
 }
+
+Case& Riviere::getCase(int ligne, int colonne)
+{
+	assert(ligne >= 0 && colonne >= 0 && ligne < getLignes() && colonne < getColonnes());
+
+	return _map[ligne - 1][colonne - 1];
+}

@@ -1,6 +1,7 @@
 #pragma once
 #include "Case.h"
 #include <vector>
+#include <cassert>
 
 using namespace std;
 
@@ -18,4 +19,5 @@ public:
 
 	int getLignes();
 	int getColonnes();
+	Case& getCase(int ligne, int colonne);
 };

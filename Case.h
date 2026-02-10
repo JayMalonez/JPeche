@@ -19,5 +19,7 @@ public:
 	bool isWater();
 	void setEmptyState(bool state);
 	void setWaterState(bool state);
+
+	void setObstacle();
 };
 

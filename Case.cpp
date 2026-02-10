@@ -25,3 +25,8 @@ void Case::setEmptyState(bool state) {
  void Case::setWaterState(bool state) {
 	 _isWater = state;
 }
+
+ void Case::setObstacle() {
+	 _symbole = " O ";
+	 this->setEmptyState(0);
+ }
