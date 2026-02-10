@@ -123,7 +123,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="JPeche.cpp" />
+    <ClCompile Include="Case.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="Riviere.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Case.h" />
+    <ClInclude Include="Riviere.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

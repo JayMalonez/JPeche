@@ -1,6 +1,9 @@
 #include <iostream>
+#include "Riviere.h"
 
 int main()
 {
-    std::cout << "Hello World!\n";
+    Riviere riviere;
+
+    riviere.printRiviere();
 }
