@@ -13,4 +13,5 @@ public:
 	int getY();
 	int getTaille();
 	int getOrientation();
+	virtual char getSymbole();
 };

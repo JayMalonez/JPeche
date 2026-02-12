@@ -2,6 +2,7 @@
 
 Case::Case() {
 	_symbole = " ~ ";
+	_obstacle = nullptr;
 	_x = 0;
 	_y = 0;
 	_isEmpty = 1;
@@ -40,11 +41,12 @@ void Case::setEmptyState(bool state) {
 	_isEmpty = state;
 }
 
- void Case::setWaterState(bool state) {
+void Case::setWaterState(bool state) {
 	 _isWater = state;
 }
 
- void Case::setObstacle() {
-	 _symbole = " X ";
-	 this->setEmptyState(0);
- }
+void Case::setObstacle(Obstacle* obstacle) {
+	_obstacle = obstacle;
+	_symbole = string(" ") + _obstacle->getSymbole() + " ";
+	setEmptyState(0);
+}

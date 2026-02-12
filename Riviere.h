@@ -1,5 +1,7 @@
 #pragma once
 #include "Case.h"
+#include "Roche.h"
+#include "Arbre.h"
 #include <vector>
 #include <cassert>
 
@@ -15,6 +17,7 @@ private:
 public:
 	Riviere();
 	vector<Case> newLine();
+	bool validline(vector<Case> ligne);
 
 	void printRiviere();
 	void printLine(vector<Case> ligne);

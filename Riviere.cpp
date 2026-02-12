@@ -27,15 +27,39 @@ vector<Case> Riviere::newLine()
 {
 	vector<Case> ligne;
 
-	for (int i = 0; i < getColonnes(); i++)
-	{
-		Case caseVide;
-		caseVide.setObstacle();  //temporaire
-		caseVide.setPositionX(i);
+	do {
 
-		ligne.push_back(caseVide);
-	}
+		for (int i = 0; i < getColonnes(); i++)
+		{
+			Case newCase;
+			newCase.setPositionX(i);
+
+			ligne.push_back(newCase);
+		}
+
+		for (int i = 0; i < getColonnes(); i++) {
+			// 10% d’obstacles 
+			int r = rand() % 20;
+			if (r == 0) {
+				ligne[i].setObstacle(new Roche());
+			}
+			else if (r == 1) {
+				ligne[i].setObstacle(new Arbre());
+			}
+		}
+	} while (!validline(ligne));
+
 	return ligne;
+}
+
+bool Riviere::validline(vector<Case> ligne) {
+	for (Case& c : ligne) {
+		if (c.isEmpty()) {
+			// une case libre 
+			return true;
+		}
+	} 
+	return false;
 }
 
 void Riviere::printRiviere() {
