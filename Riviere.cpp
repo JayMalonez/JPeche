@@ -2,16 +2,23 @@
 
 Riviere::Riviere() {
 	_nbColonnes = 5;
-	_nbLignes = 10; //temporaire
+	_nbLignes = 20; //temporaire
 
 	vector<Case> ligne;
-	Case caseVide;
-
-	for (int i = 0; i < getColonnes(); i++) {
-		ligne.push_back(caseVide);
-	}
 
 	for (int i = 0; i < getLignes(); i++) {
+
+		vector<Case> ligne;
+
+		for (int j = 0; j < getColonnes(); j++) {
+
+			Case caseVide;
+			caseVide.setPositionX(j);
+			caseVide.setPositionY(i);
+
+			ligne.push_back(caseVide);
+		}
+
 		_map.push_back(ligne);
 	}
 }
@@ -41,5 +48,5 @@ Case& Riviere::getCase(int ligne, int colonne)
 {
 	assert(ligne >= 0 && colonne >= 0 && ligne < getLignes() && colonne < getColonnes());
 
-	return _map[ligne - 1][colonne - 1];
+	return _map[ligne][colonne];
 }
