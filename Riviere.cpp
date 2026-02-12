@@ -21,6 +21,11 @@ Riviere::Riviere() {
 
 		_map.push_back(ligne);
 	}
+
+	_joueur = new Raft(2, getLignes()-1);
+	int x = _joueur->getX();
+	int y = _joueur->getY();
+	_map[y][x].setRaft(_joueur);
 }
 
 vector<Case> Riviere::newLine()
@@ -102,6 +107,46 @@ void Riviere::update() {
 	}
 	
 	_map[0] = newLine();
+
+	updateRaft();
+}
+
+void Riviere::updateRaft() {
+	int x = _joueur->getX();
+	int y = _joueur->getY();
+	_map[y][x].setRaft(_joueur);
+}
+
+void Riviere::deplacerDroite() {
+	int x = _joueur->getX();
+	int y = _joueur->getY();
+	if (x != 4)
+	{
+		_joueur->setPosition(x + 1, y);
+		_map[y][x + 1].setRaft(_joueur);
+	}
+}
+
+void Riviere::deplacerGauche() {
+	int x = _joueur->getX();
+	int y = _joueur->getY();
+	if (x != 0)
+	{
+		_joueur->setPosition(x - 1, y);
+		_map[y][x].setRaft(_joueur);
+	}
+}
+
+bool Riviere::validMove()
+{
+	int x = _joueur->getX();
+	int y = _joueur->getY();
+
+	if (_map[y][x].isEmpty())
+	{
+		return true;
+	}
+	return false;
 }
 
 int Riviere::getLignes()

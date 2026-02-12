@@ -1,5 +1,6 @@
 #pragma once
 #include "Obstacle.h"
+#include "Raft.h"
 #include <iostream>
 
 using namespace std;
@@ -29,5 +30,6 @@ public:
 	void setEmptyState(bool state);
 	void setWaterState(bool state);
 	void setObstacle(Obstacle* obstacle);
+	void setRaft(Raft* joueur);
 };
 
