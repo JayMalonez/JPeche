@@ -23,6 +23,21 @@ Riviere::Riviere() {
 	}
 }
 
+vector<Case> Riviere::newLine()
+{
+	vector<Case> ligne;
+
+	for (int i = 0; i < getColonnes(); i++)
+	{
+		Case caseVide;
+		caseVide.setObstacle();  //temporaire
+		caseVide.setPositionX(i);
+
+		ligne.push_back(caseVide);
+	}
+	return ligne;
+}
+
 void Riviere::printRiviere() {
 	for (int i = 0; i < getLignes(); i++) {
 		for (int j = 0; j < getColonnes(); j++) {
@@ -32,6 +47,37 @@ void Riviere::printRiviere() {
 			}
 		}
 	}
+
+	/*for (int i = 0; i < getLignes(); i++) {
+		for (int j = 0; j < getColonnes(); j++) {
+			cout << _map[i][j].positionX() << "," << _map[i][j].positionY() << " ";
+			if (j == getColonnes() - 1) {
+				cout << endl;
+			}
+		}
+	}*/
+}
+
+void Riviere::printLine(vector<Case> ligne) {
+	for (int i = 0; i < getColonnes(); i++) {
+		ligne[i].printCase();
+		if (i == getColonnes() - 1) {
+			cout << endl;
+		}
+	}
+}
+
+void Riviere::update() {
+	// Décale toutes les lignes vers le bas 
+	for (int i = getLignes() - 1; i > 0; i--) {
+		_map[i] = _map[i - 1]; 
+
+		for (int j = 0; j < getColonnes(); j++) { 
+			_map[i][j].setPositionY(i); 
+		}
+	}
+	
+	_map[0] = newLine();
 }
 
 int Riviere::getLignes()

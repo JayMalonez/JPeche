@@ -14,8 +14,11 @@ private:
 
 public:
 	Riviere();
+	vector<Case> newLine();
 
 	void printRiviere();
+	void printLine(vector<Case> ligne);
+	void update();
 
 	int getLignes();
 	int getColonnes();
