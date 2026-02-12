@@ -123,13 +123,21 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Arbre.cpp" />
     <ClCompile Include="Case.cpp" />
+    <ClCompile Include="Raft.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Obstacle.cpp" />
     <ClCompile Include="Riviere.cpp" />
+    <ClCompile Include="Roche.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Arbre.h" />
     <ClInclude Include="Case.h" />
+    <ClInclude Include="Raft.h" />
+    <ClInclude Include="Obstacle.h" />
     <ClInclude Include="Riviere.h" />
+    <ClInclude Include="Roche.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
