@@ -18,3 +18,6 @@ int Roche::getY()
 	return _y;
 }
 
+char Roche::getSymbole() {
+	return _symbole;
+}

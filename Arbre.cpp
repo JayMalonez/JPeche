@@ -28,3 +28,6 @@ int Arbre::getOrientation()
 	return _orientation;
 }
 
+char Arbre::getSymbole() {
+	return _symbole;
+}

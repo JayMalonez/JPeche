@@ -1,4 +1,5 @@
 #pragma once
+#include "Obstacle.h"
 #include <iostream>
 
 using namespace std;
@@ -6,6 +7,7 @@ using namespace std;
 class Case {
 private:
 	string _symbole;
+	Obstacle* _obstacle;
 
 	int _x;
 	int _y;
@@ -26,7 +28,6 @@ public:
 	void setPositionY(int y);
 	void setEmptyState(bool state);
 	void setWaterState(bool state);
-
-	void setObstacle();
+	void setObstacle(Obstacle* obstacle);
 };
 

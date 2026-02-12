@@ -1,5 +1,7 @@
 #pragma once
 #include "Riviere.h"
+#include <chrono>
+#include <thread>
 
 using namespace std;
 
@@ -13,5 +15,6 @@ public:
 	Game();
 	void run();
 
+	void generateRiver();
 };
 

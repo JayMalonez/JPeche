@@ -11,4 +11,5 @@ class Roche : public Obstacle {
 		~Roche();
 		int getX();
 		int getY();
+		virtual char getSymbole();
 };

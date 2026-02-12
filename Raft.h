@@ -1,3 +1,4 @@
+#pragma once
 
 class Raft {
 
@@ -12,9 +13,6 @@ class Raft {
 		int getY();
 		void setPosition(int x, int y);
 		char getSymbole();
-
-		
-
 
 };
 
