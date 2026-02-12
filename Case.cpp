@@ -2,6 +2,8 @@
 
 Case::Case() {
 	_symbole = " ~ ";
+	_x = 0;
+	_y = 0;
 	_isEmpty = 1;
 	_isWater = 1;
 }
@@ -10,12 +12,28 @@ void Case::printCase() {
 	cout << _symbole;
 }
 
+int Case::positionX() {
+	return _x;
+}
+
+int Case::positionY() {
+	return _y;
+}
+
 bool Case::isEmpty() {
 	return _isEmpty;
 }
 
 bool Case::isWater() {
 	return _isWater;
+}
+
+void Case::setPositionX(int x) {
+	_x = x;
+}
+
+void Case::setPositionY(int y) {
+	_y = y;
 }
 
 void Case::setEmptyState(bool state) {
@@ -27,6 +45,6 @@ void Case::setEmptyState(bool state) {
 }
 
  void Case::setObstacle() {
-	 _symbole = " O ";
+	 _symbole = " X ";
 	 this->setEmptyState(0);
  }

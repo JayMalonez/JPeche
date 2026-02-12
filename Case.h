@@ -7,6 +7,8 @@ class Case {
 private:
 	string _symbole;
 
+	int _x;
+	int _y;
 	bool _isEmpty;
 	bool _isWater;
 
@@ -15,8 +17,13 @@ public:
 
 	void printCase();
 
+	int positionX();
+	int positionY();
 	bool isEmpty();
 	bool isWater();
+
+	void setPositionX(int x);
+	void setPositionY(int y);
 	void setEmptyState(bool state);
 	void setWaterState(bool state);
 
