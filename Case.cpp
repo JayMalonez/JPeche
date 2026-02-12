@@ -50,3 +50,7 @@ void Case::setObstacle(Obstacle* obstacle) {
 	_symbole = string(" ") + _obstacle->getSymbole() + " ";
 	setEmptyState(0);
 }
+
+void Case::setRaft(Raft* joueur) {
+	_symbole = string(" ") + joueur->getSymbole() + " ";
+}
