@@ -115,15 +115,22 @@ void Riviere::updateRaft() {
 	int x = _joueur->getX();
 	int y = _joueur->getY();
 	_map[y][x].setRaft(_joueur);
+	if (y < 19)
+	{
+		_map[y + 1][x].removeRaft();
+	}
 }
 
 void Riviere::deplacerDroite() {
 	int x = _joueur->getX();
 	int y = _joueur->getY();
-	if (x != 4)
+	if (x != getColonnes() -1)
 	{
 		_joueur->setPosition(x + 1, y);
-		_map[y][x + 1].setRaft(_joueur);
+		int newx = _joueur->getX();
+		int newy = _joueur->getY();
+		_map[newy][newx].setRaft(_joueur);
+		_map[y][x].removeRaft();
 	}
 }
 
@@ -133,7 +140,36 @@ void Riviere::deplacerGauche() {
 	if (x != 0)
 	{
 		_joueur->setPosition(x - 1, y);
-		_map[y][x].setRaft(_joueur);
+		int newx = _joueur->getX();
+		int newy = _joueur->getY();
+		_map[newy][newx].setRaft(_joueur);
+		_map[y][x].removeRaft();
+	}
+}
+
+void Riviere::deplacerHaut() {
+	int x = _joueur->getX();
+	int y = _joueur->getY();
+	if (y != 0)
+	{
+		_joueur->setPosition(x, y - 1);
+		int newx = _joueur->getX();
+		int newy = _joueur->getY();
+		_map[newy][newx].setRaft(_joueur);
+		_map[y][x].removeRaft();
+	}
+}
+
+void Riviere::deplacerBas() {
+	int x = _joueur->getX();
+	int y = _joueur->getY();
+	if (y != getLignes() -1)
+	{
+		_joueur->setPosition(x, y + 1);
+		int newx = _joueur->getX();
+		int newy = _joueur->getY();
+		_map[newy][newx].setRaft(_joueur);
+		_map[y][x].removeRaft();
 	}
 }
 
