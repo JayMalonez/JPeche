@@ -28,6 +28,8 @@ public:
 	void updateRaft();
 	void deplacerDroite();
 	void deplacerGauche();
+	void deplacerHaut();
+	void deplacerBas();
 	bool validMove();
 
 	int getLignes();

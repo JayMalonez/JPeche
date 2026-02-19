@@ -18,6 +18,14 @@ void Game::run() {
 					_riviere.deplacerGauche();
 					checkloss();
 					break;
+				case 'w':
+					_riviere.deplacerHaut();
+					checkloss();
+					break;
+				case 's':
+					_riviere.deplacerBas();
+					checkloss();
+					break;
 			}
 		}
 		_riviere.update();

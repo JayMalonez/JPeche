@@ -31,5 +31,6 @@ public:
 	void setWaterState(bool state);
 	void setObstacle(Obstacle* obstacle);
 	void setRaft(Raft* joueur);
+	void removeRaft();
 };
 
