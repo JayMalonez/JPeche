@@ -17,4 +17,5 @@ public:
 	void run();
 
 	void checkloss();
+	void newHighScore(int *highScore);
 };

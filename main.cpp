@@ -5,9 +5,12 @@
 int main()
 {
 char start = ' ';
-	while (start != '2/')
+int highScore = 0;
+	while (start != '2')
 	{
-		cout << "choisir une option : \n"
+		cout << "WOW!! " << highScore << " Est le score a battre!!\n"
+				"\n"
+				"choisir une option : \n"
 				"1 - commencer\n"
 				"2 - quitter\n";
 		cin >> start;
@@ -18,6 +21,7 @@ char start = ' ';
 				system("cls");
 				Game game;
 				game.run();
+				game.newHighScore(&highScore);
 			}
 		system("cls");
 	}

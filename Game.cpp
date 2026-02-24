@@ -45,3 +45,7 @@ void Game::checkloss() {
 		_running = false;
 	}
 }
+
+void Game::newHighScore(int* highScore) {
+	_riviere.newHighScore(highScore);
+}
