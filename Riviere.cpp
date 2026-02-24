@@ -109,6 +109,7 @@ void Riviere::update() {
 	_map[0] = newLine();
 
 	updateRaft();
+	scorePlus();
 }
 
 void Riviere::updateRaft() {
@@ -157,6 +158,7 @@ void Riviere::deplacerHaut() {
 		int newy = _joueur->getY();
 		_map[newy][newx].setRaft(_joueur);
 		_map[y][x].removeRaft();
+		scorePlus();
 	}
 }
 
@@ -170,7 +172,9 @@ void Riviere::deplacerBas() {
 		int newy = _joueur->getY();
 		_map[newy][newx].setRaft(_joueur);
 		_map[y][x].removeRaft();
+		scoreMoins();
 	}
+	
 }
 
 bool Riviere::validMove()
@@ -200,4 +204,17 @@ Case& Riviere::getCase(int ligne, int colonne)
 	assert(ligne >= 0 && colonne >= 0 && ligne < getLignes() && colonne < getColonnes());
 
 	return _map[ligne][colonne];
+}
+
+void Riviere::scorePlus() {
+	score += 1;
+}
+
+void Riviere::scoreMoins() {
+	score -= 1;
+}
+
+void Riviere::newHighScore(int* highScore) {
+	if (*highScore < score)
+		*highScore = score;
 }

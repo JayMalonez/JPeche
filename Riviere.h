@@ -16,6 +16,11 @@ private:
 	vector<vector<Case>> _map;
 	Raft* _joueur;
 
+	int score = 0;
+
+	void scorePlus();
+	void scoreMoins();
+
 public:
 	Riviere();
 	vector<Case> newLine();
@@ -35,4 +40,6 @@ public:
 	int getLignes();
 	int getColonnes();
 	Case& getCase(int ligne, int colonne);
+
+	void newHighScore(int* highScore);
 };
