@@ -8,7 +8,7 @@ char start = ' ';
 int highScore = 0;
 	while (start != '2')
 	{
-		cout << "WOW!! " << highScore << " Est le score a battre!!\n"
+		cout << "WOW!! " << highScore << " est le score à battre!!\n"
 				"\n"
 				"choisir une option : \n"
 				"1 - commencer\n"
