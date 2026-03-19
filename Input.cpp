@@ -49,6 +49,11 @@ COM_Serial::COM_Serial(string port, DWORD baudRate = CBR_115200) {
     connected = true;
 }
 
+COM_Serial::~COM_Serial(){
+    if (hSerial != INVALID_HANDLE_VALUE) {
+        CloseHandle(hSerial);
+ }
+}
 
 int COM_Serial::joystickPotX() { return 0; }
 int COM_Serial::joystickPotY(){ return; }
