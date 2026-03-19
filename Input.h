@@ -4,8 +4,12 @@
 #include <iostream>
 #include <windows.h>
 #include "lib/json.hpp"
-#include <string>
 #include <vector>
+#include "InputConfig.h"
+
+using namespace std;
+using json = nlohmann::json;
+
 class COM_Serial {
 private:
     HANDLE hSerial;
@@ -20,18 +24,19 @@ public:
     int joystickPotX();
     int joystickPotY();
     //bouton
-    int bouton1();
-    int bouton2();
-    int bouton3();
-    int bouton4();
-    //accéléromêtre
+    bool bouton1();
+    bool bouton2();
+    bool bouton3();
+    bool bouton4();
+    //accï¿½lï¿½romï¿½tre
     int cast();
     //encodeur
     int encodeur();
-    //Lecture et écriture du jsom
+    //Lecture et ï¿½criture du jsom
     bool isConnected();
     bool writeMSG(const json& j_msg);
     json readMSG();
+    json askMSG();
 
 };
 #endif

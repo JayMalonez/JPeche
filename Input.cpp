@@ -1,12 +1,9 @@
 #include "Input.h"
 #include  "Lib/json.hpp"
-using json = nlohmann::json;
 
-COM_Serial::COM_Serial(string port, DWORD baudRate = CBR_115200) {
+COM_Serial::COM_Serial(string port, DWORD baudRate) {
     connected = false;
     portName = "\\\\.\\" + port;
-
-
 
     // Initializing an object of wstring
     wstring temp = wstring(portName.begin(), portName.end());
@@ -55,21 +52,29 @@ COM_Serial::~COM_Serial(){
  }
 }
 
-int COM_Serial::joystickPotX() { return 0; }
-int COM_Serial::joystickPotY(){ return; }
+int COM_Serial::joystickPotX() {
+
+    json messages;
+    
+    readMSG();
+
+    return 0;
+ }
+
+int COM_Serial::joystickPotY(){ return 0; }
 //bouton
-int COM_Serial::bouton1(){ return 0; }
-int COM_Serial::bouton2(){ return 0; }
-int COM_Serial::bouton3(){ return 0; }
-int COM_Serial::bouton4(){ return 0; }
-//accéléromêtre
+bool COM_Serial::bouton1(){ return 0; }
+bool COM_Serial::bouton2(){ return 0; }
+bool COM_Serial::bouton3(){ return 0; }
+bool COM_Serial::bouton4(){ return 0; }
+//accï¿½lï¿½romï¿½tre
 int COM_Serial::cast(){ return 0; }
 //encodeur
 int COM_Serial::encodeur(){ return 0; }
 
 bool COM_Serial::isConnected() { return connected; }
 
-bool COM_Serial::writeMSG(const json& j_msg){
+bool COM_Serial::writeMSG(const json &j_msg){
     if (!connected) return false;
 
     string payload = j_msg.dump();
@@ -83,7 +88,7 @@ json COM_Serial::readMSG(){
 
     if (!connected) return json();
 
-    char buffer[256]; // Augmenté un peu pour plus de sécurité
+    char buffer[256]; // Augmentï¿½ un peu pour plus de sï¿½curitï¿½
     DWORD bytesRead;
     json j_rcv;
 
@@ -101,5 +106,3 @@ json COM_Serial::readMSG(){
     }
     return j_rcv;
 }
-
-json ask

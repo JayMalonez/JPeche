@@ -1,5 +1,7 @@
 #pragma once
 #include "Riviere.h"
+#include "Input.h"
+#include "InputConfig.h"
 #include <chrono>
 #include <thread>
 #include <conio.h>
@@ -10,6 +12,8 @@ class Game
 {
 private:
 	Riviere _riviere;
+	COM_Serial _input;
+	InputConfig _config;
 	bool _running = true;
 
 public:
