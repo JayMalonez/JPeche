@@ -126,6 +126,8 @@
     <ClCompile Include="Arbre.cpp" />
     <ClCompile Include="Case.cpp" />
     <ClCompile Include="Game.cpp" />
+    <ClCompile Include="Input.cpp" />
+    <ClCompile Include="InputConfig.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Obstacle.cpp" />
     <ClCompile Include="Raft.cpp" />
@@ -136,10 +138,15 @@
     <ClInclude Include="Arbre.h" />
     <ClInclude Include="Case.h" />
     <ClInclude Include="Game.h" />
+    <ClInclude Include="Input.h" />
+    <ClInclude Include="InputConfig.h" />
     <ClInclude Include="Obstacle.h" />
     <ClInclude Include="Raft.h" />
     <ClInclude Include="Riviere.h" />
     <ClInclude Include="Roche.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="input_config.json" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
