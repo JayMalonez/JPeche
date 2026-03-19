@@ -20,6 +20,7 @@ InputConfig InputConfigManager::load(const std::string& filename) {
         if (j.contains("encoderThreshold")) config.encoderThreshold = j["encoderThreshold"].get<int>();
         if (j.contains("encoderCenter")) config.encoderCenter = j["encoderCenter"].get<int>();
         if (j.contains("pollIntervalMs")) config.pollIntervalMs = j["pollIntervalMs"].get<int>();
+        if (j.contains("ms")) config.pollIntervalMs = j["ms"].get<int>();
     }
     catch (const std::exception& e) {
         std::cerr << "Error parsing " << filename << ": " << e.what() << ". Using defaults." << std::endl;

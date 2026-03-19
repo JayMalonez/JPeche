@@ -15,6 +15,8 @@ private:
     HANDLE hSerial;
     string portName;
     bool connected;
+    string message_buffer;
+	int enc = 0; // Variable pour stocker la dernière valeur de l'encodeur
 public:
     // Constructeur : Ouvre et configure le port
     COM_Serial(string port, DWORD baudRate = CBR_115200);

@@ -1,10 +1,10 @@
 {
   "joystickCenter": 512,
-  "joystickDeadzone": 70,
+  "joystickDeadzone": 140,
   "joystickMin": 0,
   "joystickMax": 1023,
   "encoderThreshold": 1,
   "encoderCenter": 0,
   "pollIntervalMs": 200,
-  "m/s" : 3
+  "ms" : 3
 }
