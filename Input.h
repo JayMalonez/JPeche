@@ -16,29 +16,30 @@ private:
     string portName;
     bool connected;
     string message_buffer;
+    
 	int enc = 0; // Variable pour stocker la dernière valeur de l'encodeur
+    json data;
 public:
     // Constructeur : Ouvre et configure le port
     COM_Serial(string port, DWORD baudRate = CBR_115200);
     ~COM_Serial();
 
-    //joystick
+    bool isConnected();
+
+    //Lecture et ecriture du json
+    bool writeMSG(const json& j_msg);
+    json readMSG();
+    void askMSG(); //update le data
+
+    //retourne les valeurs du data
     int joystickPotX();
     int joystickPotY();
-    //bouton
     bool bouton1();
     bool bouton2();
     bool bouton3();
     bool bouton4();
-    //acc�l�rom�tre
     int cast();
-    //encodeur
     int encodeur();
-    //Lecture et �criture du jsom
-    bool isConnected();
-    bool writeMSG(const json& j_msg);
-    json readMSG();
-    json askMSG();
 
 };
 #endif

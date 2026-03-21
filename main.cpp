@@ -30,6 +30,7 @@ void testInput() {
 	int y_status = 0; // -1 down, +1 up
 
 	while (true) {
+		input.askMSG();
 		int x_status= input.joystickPotX();
 		int y_status = input.joystickPotY();
 		int enc = input.encodeur();
