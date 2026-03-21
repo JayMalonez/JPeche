@@ -16,7 +16,7 @@ private:
     string portName;
     bool connected;
     string message_buffer;
-    
+
 	int enc = 0; // Variable pour stocker la dernière valeur de l'encodeur
     json data;
 public:
@@ -38,7 +38,7 @@ public:
     bool bouton2();
     bool bouton3();
     bool bouton4();
-    int cast();
+    int cast(); //acelerometre
     int encodeur();
 
 };
