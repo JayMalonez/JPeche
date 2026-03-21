@@ -54,83 +54,6 @@ COM_Serial::~COM_Serial(){
  }
 }
 
-int COM_Serial::joystickPotX() {
-
-    json message = askMSG();
-    return message["pot_X"];
- }
-
-int COM_Serial::joystickPotY(){
-
-    json message = askMSG();
-    return message["pot_Y"];
- }
-
-//bouton
-bool COM_Serial::bouton1(){
-
-    json message = askMSG();
-    return message["BTN_1"] != 0;
-    
- }
-
-bool COM_Serial::bouton2(){
-    
-    json message = askMSG();
-    return message["BTN_2"] != 0;
-}
-
-bool COM_Serial::bouton3(){ 
-
-    json message = askMSG();
-    return message["BTN_3"] != 0;
-}
-
-bool COM_Serial::bouton4(){ 
-
-    json message = askMSG();
-    return message["BTN_4"] != 0;
- }
-
-//acc�l�rom�tre
-int COM_Serial::cast(){
-
-    InputConfig config = InputConfigManager::load();
-    json message = askMSG();
-    int x = message["X_mG"];
-    int y = message["Y_mG"];
-    int z = message["Z_mG"];
-    int t = x + y + z;
-    if ( t > config.ms)
-        return 1;
-
-    else
-        return 0;
-
-}
-//encodeur
-int COM_Serial::encodeur(){ 
-    InputConfig config = InputConfigManager::load();
-    json message = askMSG();
-	
-    cout << "DEBUG ENCODEUR : " << message["ENCODER"] - enc << endl;
-    cout << "DEBUG enc : " << enc << endl;
-
-
-    if ((message["ENCODER"] - enc) > config.encoderThreshold) {
-        enc = message["ENCODER"];
-        return 1;
-    }
-    else if ((message["ENCODER"] - enc) < -config.encoderThreshold) {
-        enc = message["ENCODER"];
-        return -1;
-    }
-
-    else {
-        return 0;
-	}
-}
-
 bool COM_Serial::isConnected() { return connected; }
 
 bool COM_Serial::writeMSG(const json &j_msg){
@@ -187,9 +110,67 @@ json COM_Serial::readMSG(){
     return j_rcv;
 }
 
-json COM_Serial::askMSG(){
+void COM_Serial::askMSG() {    
     json ask;
     writeMSG(ask);
-    return readMSG();
+    data = readMSG();
+}
 
+int COM_Serial::joystickPotX() {
+    return data["pot_X"];
+ }
+
+int COM_Serial::joystickPotY(){
+    return data["pot_Y"];
+ }
+
+bool COM_Serial::bouton1(){
+    return data["BTN_1"] != 0; 
+ }
+
+bool COM_Serial::bouton2(){
+    return data["BTN_2"] != 0;
+}
+
+bool COM_Serial::bouton3(){ 
+    return data["BTN_3"] != 0;
+}
+
+bool COM_Serial::bouton4(){ 
+    return data["BTN_4"] != 0;
+ }
+
+//accelerometre
+int COM_Serial::cast(){
+    InputConfig config = InputConfigManager::load();
+    int x = data["X_mG"];
+    int y = data["Y_mG"];
+    int z = data["Z_mG"];
+    int t = x + y + z;
+    if ( t > config.ms)
+        return 1;
+
+    else
+        return 0;
+}
+
+int COM_Serial::encodeur(){ 
+    InputConfig config = InputConfigManager::load();
+	
+    cout << "DEBUG ENCODEUR : " << data["ENCODER"] - enc << endl;
+    cout << "DEBUG enc : " << enc << endl;
+
+
+    if ((data["ENCODER"] - enc) > config.encoderThreshold) {
+        enc = data["ENCODER"];
+        return 1;
+    }
+    else if ((data["ENCODER"] - enc) < -config.encoderThreshold) {
+        enc = data["ENCODER"];
+        return -1;
+    }
+
+    else {
+        return 0;
+	}
 }
