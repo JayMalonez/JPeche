@@ -8,6 +8,7 @@
 using json = nlohmann::json;
 
 struct InputConfig {
+    // valeurs par défaut -> modifier input_config.json pour changer les valeurs
     int joystickCenter = 512;
     int joystickDeadzone = 50;
     int joystickMin = 0;

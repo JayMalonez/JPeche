@@ -30,15 +30,15 @@ void testInput() {
 	int y_status = 0; // -1 down, +1 up
 
 	while (true) {
-		input.askMSG();
+		input.askMSG(); // tester la nouvelle performance
 		int x_status= input.joystickPotX();
 		int y_status = input.joystickPotY();
 		int enc = input.encodeur();
 		bool b1 = input.bouton1();
 		bool b2 = input.bouton2();
 		bool b3 = input.bouton3();
-		bool b4 = input.bouton4();
-		int castVal = input.cast();
+		bool b4 = input.bouton4(); 
+		int castVal = input.cast(); // à tester
 
 		bool detected = false;
 		if (y_status < config.joystickCenter-config.joystickDeadzone) {
