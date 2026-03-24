@@ -9,7 +9,7 @@
 
 void testInput() {
 	InputConfig config = InputConfigManager::load("input_config.json");
-	COM_Serial input("COM7");
+	COM_Serial input("COM4");
 	if (!input.isConnected()) {
 		std::cout << "Input non connecté sur COM3. Mode clavier activé. Appuyez sur q pour quitter.\n";
 		while (true) {
@@ -18,7 +18,7 @@ void testInput() {
 				if (c == 'q' || c == 'Q') break;
 				std::cout << "Clavier détecté: " << c << "\n";
 			}
-			std::this_thread::sleep_for(std::chrono::milliseconds(100));
+			std::this_thread::sleep_for(std::chrono::milliseconds(3));
 		}
 		return;
 	}
@@ -42,19 +42,19 @@ void testInput() {
 
 		bool detected = false;
 		if (y_status < config.joystickCenter-config.joystickDeadzone) {
-			std::cout << "Joystick droite\n";
+			std::cout << "Joystick bas\n";
 			detected = true;
 		}
 		else if (y_status > config.joystickCenter + config.joystickDeadzone) {
-			std::cout << "Joystick gauche \n";
+			std::cout << "Joystick haut \n";
 			detected = true;
 		}
 		if (x_status > config.joystickCenter + config.joystickDeadzone) {
-			std::cout << "Joystick haut\n";
+			std::cout << "Joystick gauche\n";
 			detected = true;
 		}
 		else if (x_status < config.joystickCenter - config.joystickDeadzone) {
-			std::cout << "Joystick bas\n";
+			std::cout << "Joystick droite\n";
 			detected = true;
 		}
 
@@ -84,6 +84,11 @@ void testInput() {
 			detected = true;
 		}
 
+		if (castVal == 1) {
+			std::cout << "Mouvement brusque détecté par l'accéléromètre\n";
+			detected = true;
+		}
+
 		this_thread::sleep_for(std::chrono::milliseconds(5));
 		 
 	}
@@ -94,26 +99,31 @@ int main() {
 	char start = ' ';
 	int highScore = 0;
 
-	/*while (start != '2') {
+	while (start != '2') {
 		cout << "WOW!! " << highScore << " est le score � battre!!\n"
 				"\n"
 				"choisir une option : \n"
 				"1 - commencer\n"
-				"2 - quitter\n";
+				"2 - quitter\n"
+				"3 - test input\n";
 		cin >> start;
 			if (start == '2')
 				break;
-			if (start == '1')
+			else if (start == '1')
 			{
 				system("cls");
 				Game game;
 				game.run();
 				game.newHighScore(&highScore);
 			}
-		system("cls");
-	}*/
 
-	testInput();
+			else if(start == '3') {
+				testInput();
+			}
+		system("cls");
+	}
+
+	
 
 }
 

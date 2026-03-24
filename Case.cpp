@@ -43,6 +43,14 @@ void Case::setEmptyState(bool state) {
 
 void Case::setWaterState(bool state) {
 	 _isWater = state;
+	 if (state) {
+		 _symbole = " ~ ";
+		 delete _obstacle;
+		 _obstacle = nullptr;
+		 setEmptyState(1);
+	 }
+	 
+	 
 }
 
 void Case::setObstacle(Obstacle* obstacle) {

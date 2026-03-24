@@ -125,6 +125,7 @@ void Riviere::updateRaft() {
 void Riviere::deplacerDroite() {
 	int x = _joueur->getX();
 	int y = _joueur->getY();
+
 	if (x != getColonnes() -1)
 	{
 		_joueur->setPosition(x + 1, y);
@@ -177,6 +178,16 @@ void Riviere::deplacerBas() {
 	
 }
 
+void Riviere::deplacerSaut() {
+	int x = _joueur->getX();
+	int y = _joueur->getY();
+
+	for (int i = 1; i < 4; i++) {
+		_map[y-i][x].setWaterState(true);
+	}
+	
+}
+
 bool Riviere::validMove()
 {
 	int x = _joueur->getX();
@@ -204,6 +215,10 @@ Case& Riviere::getCase(int ligne, int colonne)
 	assert(ligne >= 0 && colonne >= 0 && ligne < getLignes() && colonne < getColonnes());
 
 	return _map[ligne][colonne];
+}
+
+int Riviere::getScore() {
+	return score;
 }
 
 void Riviere::scorePlus() {

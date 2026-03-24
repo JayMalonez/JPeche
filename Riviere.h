@@ -5,6 +5,7 @@
 #include "Arbre.h"
 #include <vector>
 #include <cassert>
+#include "input.h"
 
 using namespace std;
 
@@ -35,11 +36,13 @@ public:
 	void deplacerGauche();
 	void deplacerHaut();
 	void deplacerBas();
+	void deplacerSaut();
 	bool validMove();
 
 	int getLignes();
 	int getColonnes();
 	Case& getCase(int ligne, int colonne);
+	int getScore();
 
 	void newHighScore(int* highScore);
 };

@@ -1,6 +1,8 @@
 #include "Input.h"
 #include  "Lib/json.hpp"
 #include "InputConfig.h"
+#include <cmath>
+#include <iostream>
 
 
 COM_Serial::COM_Serial(string port, DWORD baudRate) {
@@ -116,11 +118,11 @@ void COM_Serial::askMSG() {
     data = readMSG();
 }
 
-int COM_Serial::joystickPotX() {
+int COM_Serial::joystickPotY() {
     return data["pot_X"];
  }
 
-int COM_Serial::joystickPotY(){
+int COM_Serial::joystickPotX(){
     return data["pot_Y"];
  }
 
@@ -144,8 +146,11 @@ bool COM_Serial::bouton4(){
 int COM_Serial::cast(){
     InputConfig config = InputConfigManager::load();
     int x = data["X_mG"];
+    x = abs(x);
     int y = data["Y_mG"];
+    y = abs(y);
     int z = data["Z_mG"];
+    z = abs(z);
     int t = x + y + z;
     if ( t > config.ms)
         return 1;
@@ -157,8 +162,8 @@ int COM_Serial::cast(){
 int COM_Serial::encodeur(){ 
     InputConfig config = InputConfigManager::load();
 	
-    cout << "DEBUG ENCODEUR : " << data["ENCODER"] - enc << endl;
-    cout << "DEBUG enc : " << enc << endl;
+    //cout << "DEBUG ENCODEUR : " << data["ENCODER"] - enc << endl;
+    //cout << "DEBUG enc : " << enc << endl;
 
 
     if ((data["ENCODER"] - enc) > config.encoderThreshold) {

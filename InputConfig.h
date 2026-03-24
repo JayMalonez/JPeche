@@ -14,7 +14,7 @@ struct InputConfig {
     int joystickMax = 1023;
     int encoderThreshold = 1;
     int encoderCenter = 0;
-    int pollIntervalMs = 200;
+    int pollIntervalMs = 3;
     int ms = 3;
 
     int joystickLeftLimit() const { return joystickCenter - joystickDeadzone; }
